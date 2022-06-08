@@ -38,6 +38,8 @@ class auth extends CI_Controller
             if ($user['id_role'] == 2 and password_verify($password, $user['password'])) {
                 //jika yang login pengguna
                 $data = [
+                    'id_user' => $user['id_user'],
+                    'nama' => $user['nama'],
                     'email' => $user['email'],
                     'id_role' => $user['id_role']
                 ];
@@ -45,7 +47,12 @@ class auth extends CI_Controller
                 redirect('user');
             } elseif ($user['id_role'] == 1 and password_verify($password, $user['password'])) {
                 //jika yang login admin
-                echo 'login berhasil admin';
+                $data = [
+                    'email' => $user['email'],
+                    'id_role' => $user['id_role']
+                ];
+                $this->session->set_userdata($data);
+                redirect('admin/dashboard_admin');
             } else {
                 //notif password salah
                 $this->session->set_flashdata(
@@ -118,6 +125,8 @@ class auth extends CI_Controller
 
     public function logout()
     {
+        $this->session->unset_userdata('id_user');
+        $this->session->unset_userdata('nama');
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('id_role');
 

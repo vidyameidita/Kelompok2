@@ -1,3 +1,6 @@
+<?php
+date_default_timezone_set("Asia/Jakarta");
+?>
 <!-- Page Wrapper -->
 <div id="wrapper">
 
@@ -24,16 +27,18 @@
         </li>
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('user/tulis_laporan'); ?>">
+            <a class="nav-link" href="<?php echo base_url('user/tulis_laporan') ?>">
                 <i class="fas fa-fw fa-pen-alt"></i>
                 <span>Tulis Laporan</span></a>
         </li>
 
         <li class="nav-item active">
             <a class="nav-link" href="<?php echo base_url('user/daftar_laporan'); ?>">
-            <i class="fas fa-wa fa-id-card"></i>
+                <i class="fas fa-wa fa-id-card"></i>
                 <span>Daftar Laporan</span></a>
         </li>
+
+
 
 
         <!-- Nav Item - Utilities Collapse Menu -->
@@ -120,102 +125,43 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Daftar Laporan Anda</h1>
                 </div>
 
-                <!-- Content Row -->
-                <div class="row">
+                <table class="table table-primary text-dark">
+                    <tr>
+                        <th>No</th>
+                        <th>NIK</th>
+                        <th>Nama</th>
+                        <th>Tanggal Masuk</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <?php 
+                $count = 1;
+                foreach($table_tiket as $tiket) {
+                ?>
+                <tbody>
+                    <tr>
+                        <td><?php echo $count++ ?></td>
+                        <td><?php echo $tiket->id_user; ?></td>
+                        <td><?php echo $this->session->userdata('nama'); ?></td>
+                        <td><?php echo $tiket->tgl_tiket; ?></td>
+                        <td><?php echo $tiket->id_status; ?></td>
+                        <td>
+                            <a href="<?php echo base_url().'user/detail/'.$tiket->id_tiket; ?>" class="btn btn-warning">Detail</a>
 
-                    <!-- Earnings (Monthly) Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            Earnings (Monthly)</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            <input type="text" value="<?php echo $tiket->id_tiket ?>" name="id_tiket" hidden readonly>
+                            <a href="<?php echo base_url().'user/edit/'.$tiket->id_tiket; ?>" class="btn btn-dark">Edit</a>
 
-                    <!-- Earnings (Monthly) Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-success shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            Earnings (Annual)</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Earnings (Monthly) Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-info shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-                                        </div>
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col-auto">
-                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="progress progress-sm mr-2">
-                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Pending Requests Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-warning shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            Pending Requests</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-    <!-- /.container-fluid -->
-
-</div>
-<!-- End of Main Content -->
+                            <a href="<?php echo base_url().'user/hapus/'.$tiket->id_tiket; ?>" class="btn btn-danger">Hapus</a>
+                        </td>
+                    </tr>
+                </tbody>
+                <?php } ?>
+            </table>
+            <thead>
 
 <!-- Footer -->
 <footer class="sticky-footer bg-white">
@@ -248,7 +194,7 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Pilih Logout untuk keluar pada aplikasi ini!.</div>
+            <div class="modal-body">Pilih Logout jika ingin keluar dari aplikasi.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Kembali</button>
                 <a class="btn btn-primary" href="<?php echo base_url().'auth/logout'; ?>">Logout</a>

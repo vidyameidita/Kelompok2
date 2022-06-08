@@ -1,3 +1,6 @@
+<?php
+date_default_timezone_set("Asia/Jakarta");
+?>
 <!-- Page Wrapper -->
 <div id="wrapper">
 
@@ -18,13 +21,19 @@
         <!-- Nav Item - Dashboard -->
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('admin/dashboard_admin') ?>">
+            <a class="nav-link" href="<?php echo base_url('user') ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+
+        <li class="nav-item active">
+            <a class="nav-link" href="<?php echo base_url('user/tulis_laporan') ?>">
+                <i class="fas fa-fw fa-pen-alt"></i>
                 <span>Tulis Laporan</span></a>
         </li>
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('admin/registrasi') ?>">
+            <a class="nav-link" href="<?php echo base_url('user/daftar_laporan') ?>">
                 <i class="fas fa-wa fa-id-card"></i>
                 <span>Daftar Laporan</span></a>
         </li>
@@ -89,8 +98,8 @@
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                            <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $this->session->userdata('nama'); ?></span>
+                            <img class="img-profile rounded-circle" src="https://lisa.infomedia.co.id/digitallearning/uploads/secure/reserv/user.png">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -119,31 +128,57 @@
                     <h1 class="h3 mb-0 text-gray-800">Tulis Laporan Anda</h1>
                 </div>
 
+                
+                <?php
+                //generate random integer
+                $no_tiket = rand(100000, 999999);
+                ?>
+
                 <!-- Content Row -->
                 <div class="modal-body">
-                    <?php echo form_open_multipart('userr/tulis_laporan/tambah_laporan'); ?>
+                    <form action="<?php echo base_url().'user/tambah_laporan'; ?>" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                            <label">No. Tiket</label>
+                            <input type="text" name="no_tiket" class="form-control" value="<?php echo $no_tiket; ?>" readonly>
+                        </div>
+
                         <div class="form-group">
-                            <label>Jenis Laporan</label><br><br>
-                            <select name="id_jenis_pengaduan">
-                                <option value="101">Pelanggaran</option>
-                                <option value="102">Perizinan</option>
-                                <option value="103">Kritik</option>
-                                <option value="104">Saran</option>
-                                <option value="105">Pengaduan</option>
-                                <option value="106">Pertanyaan</option>
+                            <label>Jenis Laporan : </label>
+                            <select name="id_jenis_pengaduan" class="form-control" required>
+                                <option value="" selected>--Pilih--</option>
+                                <option value="1">Pelanggaran</option>
+                                <option value="2">Perizinan</option>
+                                <option value="3">Kritik</option>
+                                <option value="4">Saran</option>
+                                <option value="5">Pengaduan</option>
+                                <option value="6">Pertanyaan</option>
                             </select>
                         </div>
 
-                        <div class="form-group">
-                            <label>Isian Laporan</label>
-                            <textarea class="form-control" name="laporan"></textarea><br><br>
+                        <div class="form-group"> 
+                            <label>Lokasi :</label>
+                            <input type="text" name="lokasi" class="form-control">
                         </div>
 
                         <div class="form-group">
-                            <label>Upload Foto</label>
-                            <input type="file" name="foto">
+                            <label>Tanggal Pembuatan Tiket : </label>
+                            <input type="text" class="form-control" name="tgl_tiket" value="<?php echo date("d - m - Y"); ?>" readonly>
                         </div>
-                    <?php echo form_close(); ?>
+
+                        <div class="form-group" required>
+                            <label>Isian Laporan : </label>
+                            <textarea class="form-control" name="isian_laporan"></textarea>
+                        </div>
+
+                        <div class="form-group" required>
+                            <label>Upload Foto : </label>
+                            <input type="file" name="foto" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Tambah Laporan" class="btn btn-success">
+                        </div>
+                    </form>
 
                 </div>
                     
@@ -184,15 +219,15 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Apakah anda ingin keluar ?</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-body">Pilih Logout jika ingin keluar dari aplikasi.</div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Kembali</button>
+                <a class="btn btn-primary" href="<?php echo base_url().'auth/logout'; ?>">Logout</a>
             </div>
         </div>
     </div>
