@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 /**
  * 
  */
-class Tulis_laporan extends CI_Controller
+class Daftar_laporan extends CI_Controller
 {
 	
 	// public function __construct()
@@ -21,7 +21,7 @@ class Tulis_laporan extends CI_Controller
 		// die();
 
 		$this->load->view('templates/auth_header');
-        $this->load->view('user/Vtulis_laporan');
+        $this->load->view('user/Vdaftar_laporan');
         $this->load->view('templates/auth_footer');
 
 

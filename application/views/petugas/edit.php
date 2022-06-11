@@ -9,7 +9,7 @@
             <div class="sidebar-brand-icon">
                 <i class="fa-duotone fa-warehouse-full"></i>
             </div>
-            <div class="sidebar-brand-text mx-1">Masyarakat</div>
+            <div class="sidebar-brand-text mx-1">PETUGAS</div>
         </a>
 
         <!-- Divider -->
@@ -18,26 +18,23 @@
         <!-- Nav Item - Dashboard -->
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('user') ?>">
+            <a class="nav-link" href="<?php echo base_url('petugas/dashboard_petugas') ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard User</span></a>
-
+                <span>Dashboard</span></a>
         </li>
+
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('tulis_laporan') ?>">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Tulis Laporan</span></a>
-        </li>
+            <a class="nav-link" href="<?php echo base_url('petugas/pengaduan_petugas') ?>">
+                <i class="fas fa-wa fa-book"></i>
+                <span>Pengaduan</span></a>
+
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('daftar_laporan') ?>">
-                <i class="fas fa-wa fa-id-card"></i>
-                <span>Daftar Laporan</span></a>
+            <a class="nav-link" href="<?php echo base_url('petugas/respon_petugas') ?>">
+                <i class="fas fa-wa fa-file-invoice"></i>
+                <span>Respon</span></a>
         </li>
-
-
-
 
         <!-- Nav Item - Utilities Collapse Menu -->
         
@@ -116,69 +113,61 @@
                 </ul>
 
             </nav>
-            <!-- End of Topbar -->
 
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
+<div class="modal-body">
+	<section class="content">
+		<?php foreach($pengaduan_petugas as $val) { ?>
+		<form action="<?php echo base_url(). 'petugas/pengaduan_petugas/update/'.$val->id_tiket; ?>"
+			method="post">
 
-                <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Tulis Laporan Anda</h1>
-                </div>
-
-                <!-- Content Row -->
-
-                <div class="modal-body">
-                    <?php echo form_open_multipart('tulis_laporan/tambah_aksi'); ?>
-
-                <div class="form-group">
-                            <label>Jenis Laporan : </label>
-                            <select name="id_jenis_pengaduan" class="form-control" required>
-                                <option value="" selected>--Pilih--</option>
-                                <option value="1">Pelanggaran</option>
-                                <option value="2">Perizinan</option>
-                                <option value="3">Kritik</option>
-                                <option value="4">Saran</option>
-                                <option value="5">Pengaduan</option>
-                                <option value="6">Pertanyaan</option>
-                            </select>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label>Tanggal Pembuatan Tiket : </label>
-                            <input type="text" class="form-control" name="tgl_tiket" value="<?php echo date("d - m - Y"); ?>" readonly>
-                        </div>
-
-                        <div class="form-group" required>
-                            <label>Isian Laporan : </label>
-                            <textarea class="form-control" name="isian_laporan"></textarea>
-                        </div>
-
-                        <div class="form-group" required>
-                            <label>Upload Foto : </label>
-                            <input type="file" name="foto" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <input type="submit" value="Submit" class="btn btn-success">
-                        </div>
-                    <?php echo form_close(); ?>
-
-                </div>
-                    
-                </div>
-
+			<div class="form-group">
+                <label>NIK</label>
+                <input type="text" name="id_user" class="form-control" readonly value="<?php echo $val->id_user ?>" >
             </div>
-        </div>
 
-    </div>
-    <!-- /.container-fluid -->
+            <div class="form-group">
+                <label>Jenis Pengaduan</label>
+                <select name="id_jenis_pengaduan" class="form-control" readonly value="<?php echo $val->$id_jenis_pengaduan ?>">
+                    <option value="101">Pelanggaran</option>
+                    <option value="102">Perizinan</option>
+                    <option value="103">Kritik</option>
+                    <option value="104">Saran</option>
+                    <option value="105">Pengaduan</option>
+                    <option value="106">Pertanyaan</option>
+                    </select>
+            </div>
 
+
+            <div class="form-group">
+                <label>Tanggal Masuk</label>
+                <input type="text" name="tgl_tiket" class="form-control" readonly
+                value="<?php echo $val->tgl_tiket ?>">
+            </div>
+
+
+            <div class="form-group">
+                <label>Status</label>
+                <select name="id_status" class="form-control" value="<?php echo $val->$id_status ?>">
+                    <option value="1">Proses</option>
+                    <option value="2">Diterima</option>
+                    <option value="3">Ditolak</option>
+                    </select>
+            </div>
+
+            <div class="form-group">
+                <label>Isian Laporan</label>
+                <input type="text" name="isian_laporan" class="form-control" readonly
+                value="<?php echo $val->isian_laporan ?>">
+            </div>
+
+			<button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
+        	<button type="submit" class="btn btn-primary">Save</button>
+			
+		</form>
+	<?php } ?>
+	</section>
 </div>
-<!-- End of Main Content -->
 
-<!-- Footer -->
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">

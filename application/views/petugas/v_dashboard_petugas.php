@@ -9,7 +9,7 @@
             <div class="sidebar-brand-icon">
                 <i class="fa-duotone fa-warehouse-full"></i>
             </div>
-            <div class="sidebar-brand-text mx-1">Masyarakat</div>
+            <div class="sidebar-brand-text mx-1">Petugas</div>
         </a>
 
         <!-- Divider -->
@@ -18,24 +18,25 @@
         <!-- Nav Item - Dashboard -->
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('user') ?>">
+            <a class="nav-link" href="<?php echo base_url('petugas/dashboard_petugas') ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard User</span></a>
-
-        </li>
-
-        <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('tulis_laporan') ?>">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Tulis Laporan</span></a>
+                <span>Dashboard</span></a>
         </li>
 
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('daftar_laporan') ?>">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Daftar Laporan</span></a>
+            <a class="nav-link" href="<?php echo base_url('petugas/pengaduan_petugas') ?>">
+                <i class="fas fa-wa fa-book"></i>
+                <span>Pengaduan</span></a>
+
+
+        <li class="nav-item active">
+            <a class="nav-link" href="<?php echo base_url('petugas/respon_petugas') ?>">
+                <i class="fas fa-wa fa-file-invoice"></i>
+                <span>Respon</span></a>
         </li>
+
+
 
 
         <!-- Nav Item - Utilities Collapse Menu -->

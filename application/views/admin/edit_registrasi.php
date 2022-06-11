@@ -9,7 +9,7 @@
             <div class="sidebar-brand-icon">
                 <i class="fa-duotone fa-warehouse-full"></i>
             </div>
-            <div class="sidebar-brand-text mx-1">Masyarakat</div>
+            <div class="sidebar-brand-text mx-1">Admin</div>
         </a>
 
         <!-- Divider -->
@@ -18,25 +18,33 @@
         <!-- Nav Item - Dashboard -->
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('user') ?>">
+            <a class="nav-link" href="<?php echo base_url('admin/dashboard_admin') ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard User</span></a>
-
+                <span>Dashboard</span></a>
         </li>
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('tulis_laporan') ?>">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Tulis Laporan</span></a>
+            <a class="nav-link" href="<?php echo base_url('admin/registrasi') ?>">
+                <i class="fas fa-wa fa-id-card"></i>
+                <span>Registrasi</span></a>
         </li>
-
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('daftar_laporan') ?>">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Daftar Laporan</span></a>
+            <a class="nav-link" href="<?php echo base_url('admin/pengaduan') ?>">
+                <i class="fas fa-wa fa-book"></i>
+                <span>Pengaduan</span></a>
+
+        <li class="nav-item active">
+            <a class="nav-link" href="<?php echo base_url('admin/manage_petugas') ?>">
+                <i class="fas fa-wa fa-users"></i>
+                <span>Manage Petugas</span></a>
         </li>
 
+        <li class="nav-item active">
+            <a class="nav-link" href="<?php echo base_url('admin/laporan') ?>">
+                <i class="fas fa-wa fa-file-invoice"></i>
+                <span>Laporan</span></a>
+        </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
         
@@ -115,111 +123,61 @@
                 </ul>
 
             </nav>
-            <!-- End of Topbar -->
 
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
+<div class="modal-body">
+	<section class="content">
+		<?php foreach($pengaduan as $val) { ?>
+		<form action="<?php echo base_url(). 'admin/registrasi_admin/update/'.$val->id_user; ?>"
+			method="post">
 
-                <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                </div>
+			<div class="form-group">
+				<label>Nama Lengkap</label>
+				<input type="text" name="nama" class="form-control" value="<?php echo $val->nama ?>">
+			</div>
 
-                <!-- Content Row -->
-                <div class="row">
-
-                    <!-- Earnings (Monthly) Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            Earnings (Monthly)</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Earnings (Monthly) Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-success shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            Earnings (Annual)</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Earnings (Monthly) Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-info shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-                                        </div>
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col-auto">
-                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="progress progress-sm mr-2">
-                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Pending Requests Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-warning shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            Pending Requests</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="form-group">
+                <label>Jenis Kelamin</label>
+                <select name="id_jk" class="form-control" value="<?php echo $val->$id_jk ?>">
+                    <option value="1">Laki-laki</option>
+                    <option value="2">Perempuan</option>
+                    </select>
             </div>
-        </div>
 
-    </div>
-    <!-- /.container-fluid -->
 
+			<div class="form-group">
+				<label>Email</label>
+				<input type="text" name="email" class="form-control"
+				value="<?php echo $val->email ?>">
+			</div>
+
+			<div class="form-group">
+				<label>Password</label>
+				<input type="text" name="password" class="form-control"
+				value="<?php echo $val->password ?>">
+			</div>
+
+			<div class="form-group">
+				<label>Alamat</label>
+				<input type="text" name="alamat" class="form-control"
+				value="<?php echo $val->alamat ?>">
+			</div>
+
+            <div class="form-group">
+                <label>Telepon</label>
+                <input type="text" name="telp" class="form-control"
+                value="<?php echo $val->telp ?>">
+            </div>
+
+
+			
+			<button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
+        	<button type="submit" class="btn btn-primary">Save</button>
+			
+		</form>
+	<?php } ?>
+	</section>
 </div>
-<!-- End of Main Content -->
 
-<!-- Footer -->
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">

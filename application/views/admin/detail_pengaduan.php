@@ -9,7 +9,7 @@
             <div class="sidebar-brand-icon">
                 <i class="fa-duotone fa-warehouse-full"></i>
             </div>
-            <div class="sidebar-brand-text mx-1">Masyarakat</div>
+            <div class="sidebar-brand-text mx-1">Admin</div>
         </a>
 
         <!-- Divider -->
@@ -18,26 +18,23 @@
         <!-- Nav Item - Dashboard -->
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('user') ?>">
+            <a class="nav-link" href="<?php echo base_url('petugas/dashboard_petugas') ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard User</span></a>
-
+                <span>Dashboard</span></a>
         </li>
+
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('tulis_laporan') ?>">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Tulis Laporan</span></a>
-        </li>
+            <a class="nav-link" href="<?php echo base_url('petugas/pengaduan_petugas') ?>">
+                <i class="fas fa-wa fa-book"></i>
+                <span>Pengaduan</span></a>
+
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('daftar_laporan') ?>">
-                <i class="fas fa-wa fa-id-card"></i>
-                <span>Daftar Laporan</span></a>
+            <a class="nav-link" href="<?php echo base_url('petugas/respon_petugas') ?>">
+                <i class="fas fa-wa fa-file-invoice"></i>
+                <span>Respon</span></a>
         </li>
-
-
-
 
         <!-- Nav Item - Utilities Collapse Menu -->
         
@@ -116,69 +113,47 @@
                 </ul>
 
             </nav>
-            <!-- End of Topbar -->
 
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
+<div class="modal-body">
+	<section class="content">
+		<h5><strong>DETAIL PENGADUAN MASYARAKAT</strong></h5>
+        <table class="table">
 
-                <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Tulis Laporan Anda</h1>
-                </div>
+            <tr>
+                <th>NIK</th>
+                <td><?php echo $detail_pengaduan->id_user ?></td>
+            </tr>
+            <tr>
+                <th>JENIS PENGADUAN</th>
+                <td><?php echo $detail_pengaduan->id_jenis_pengaduan ?></td>
+            </tr>
+            <tr>
+                <th>TANGGAL MASUK</th>
+                <td><?php echo $detail_pengaduan->tgl_tiket ?></td>
+            </tr>
+            <tr>
+                <th>STATUS</th>
+                <td><?php echo $detail_pengaduan->id_status ?></td>
+            </tr>
+            <tr>
+                <th>ISIAN LAPORAN</th>
+                <td><?php echo $detail_pengaduan->isian_laporan ?></td>
+            </tr>
 
-                <!-- Content Row -->
+            <tr>
+                <td>
+                    <img src="<?php echo base_url(); ?>assets/foto/<?php echo $detail_pengaduan->foto; ?>
+                    " width="90" height="110">
+                </td>
+            </tr>
 
-                <div class="modal-body">
-                    <?php echo form_open_multipart('tulis_laporan/tambah_aksi'); ?>
-
-                <div class="form-group">
-                            <label>Jenis Laporan : </label>
-                            <select name="id_jenis_pengaduan" class="form-control" required>
-                                <option value="" selected>--Pilih--</option>
-                                <option value="1">Pelanggaran</option>
-                                <option value="2">Perizinan</option>
-                                <option value="3">Kritik</option>
-                                <option value="4">Saran</option>
-                                <option value="5">Pengaduan</option>
-                                <option value="6">Pertanyaan</option>
-                            </select>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label>Tanggal Pembuatan Tiket : </label>
-                            <input type="text" class="form-control" name="tgl_tiket" value="<?php echo date("d - m - Y"); ?>" readonly>
-                        </div>
-
-                        <div class="form-group" required>
-                            <label>Isian Laporan : </label>
-                            <textarea class="form-control" name="isian_laporan"></textarea>
-                        </div>
-
-                        <div class="form-group" required>
-                            <label>Upload Foto : </label>
-                            <input type="file" name="foto" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <input type="submit" value="Submit" class="btn btn-success">
-                        </div>
-                    <?php echo form_close(); ?>
-
-                </div>
-                    
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-    <!-- /.container-fluid -->
-
+            
+        </table>
+			
+			
+	</section>
 </div>
-<!-- End of Main Content -->
 
-<!-- Footer -->
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">

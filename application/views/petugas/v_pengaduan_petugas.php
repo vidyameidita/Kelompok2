@@ -9,7 +9,7 @@
             <div class="sidebar-brand-icon">
                 <i class="fa-duotone fa-warehouse-full"></i>
             </div>
-            <div class="sidebar-brand-text mx-1">Masyarakat</div>
+            <div class="sidebar-brand-text mx-1">Petugas</div>
         </a>
 
         <!-- Divider -->
@@ -17,25 +17,27 @@
 
         <!-- Nav Item - Dashboard -->
 
-        <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('user') ?>">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard User</span></a>
-
-        </li>
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('tulis_laporan') ?>">
+            <a class="nav-link" href="<?php echo base_url('petugas/dashboard_petugas') ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Tulis Laporan</span></a>
+                <span>Dashboard</span></a>
         </li>
 
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('daftar_laporan') ?>">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Daftar Laporan</span></a>
+            <a class="nav-link" href="<?php echo base_url('petugas/pengaduan_petugas') ?>">
+                <i class="fas fa-wa fa-book"></i>
+                <span>Pengaduan</span></a>
+
+
+        <li class="nav-item active">
+            <a class="nav-link" href="<?php echo base_url('petugas/respon_petugas') ?>">
+                <i class="fas fa-wa fa-file-invoice"></i>
+                <span>Respon</span></a>
         </li>
+
+
 
 
         <!-- Nav Item - Utilities Collapse Menu -->
@@ -122,99 +124,48 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Pengaduan</h1>
                 </div>
 
+                <!-- <script type="text/javascript">window.location.href = </script> -->
                 <!-- Content Row -->
-                <div class="row">
+                <section class="content">
+                    <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i>Tambah Data Petugas
+                    </button> -->
+                    <table class="table">
+                        <tr>
+                            <th>NO</th>
+                            <th>NIK</th>
+                            <th>JENIS PENGADUAN</th>
+                            <th>TANGGAL MASUK</th>
+                            <th>STATUS</th>
+                            <th colspan="2">AKSI</th>
+                        </tr>
+                        <?php
 
-                    <!-- Earnings (Monthly) Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            Earnings (Monthly)</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        $no = 1;
+                        // foreach ($variable as $key => $value) {
+                        //  # code...
+                        // }
+                        foreach ($pengaduan_petugas as $ppp => $val) {?>
+                        <tr>
+                            <td><?php echo $no++ ?></td>
+                            <td><?php echo $val->id_user ?></td>
+                            <td><?php echo $val->id_jenis_pengaduan ?></td>
+                            <td><?php echo $val->tgl_tiket ?></td>
+                            <td><?php echo $val->status ?></td>
+                            <td onclick="javascript: return confirm('Anda Yakin Hapus? ')"><?php echo anchor('petugas/pengaduan_petugas/hapus/'.$val->id_tiket, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?></td>
+                            <td><?php echo anchor('petugas/pengaduan_petugas/edit/'.$val->id_tiket, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?></td>
+                        </tr>
 
-                    <!-- Earnings (Monthly) Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-success shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            Earnings (Annual)</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php } ?>
+                    </table>
+                    
+                </section>
+                
 
-                    <!-- Earnings (Monthly) Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-info shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-                                        </div>
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col-auto">
-                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="progress progress-sm mr-2">
-                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<!-- Modal -->
 
-                    <!-- Pending Requests Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-warning shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            Pending Requests</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-    <!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->

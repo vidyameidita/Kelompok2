@@ -24,7 +24,7 @@
         </li>
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('admin/registrasi') ?>">
+            <a class="nav-link" href="<?php echo base_url('admin/registrasi_admin') ?>">
                 <i class="fas fa-wa fa-id-card"></i>
                 <span>Registrasi</span></a>
         </li>
@@ -136,6 +136,7 @@
                     <h1 class="h3 mb-0 text-gray-800">Manage Petugas</h1>
                 </div>
 
+                <!-- <script type="text/javascript">window.location.href = </script> -->
                 <!-- Content Row -->
                 <section class="content">
                 	<button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i>Tambah Data Petugas
@@ -155,13 +156,13 @@
                 		// foreach ($variable as $key => $value) {
                 		// 	# code...
                 		// }
-                		foreach ($registrasi as $tgr => $val) {?>
+                		foreach ($manage_petugas as $tgr => $val) {?>
                 		<tr>
                 			<td><?php echo $no++ ?></td>
                 			<td><?php echo $val->nama_petugas ?></td>
                 			<td><?php echo $val->username ?></td>
                 			<td><?php echo $val->telp_petugas ?></td>
-                			<td><?php echo $val->id_role ?></td>
+                			<td><?php echo $val->role ?></td>
                 			<td onclick="javascript: return confirm('Anda Yakin Hapus? ')"><?php echo anchor('admin/manage_petugas/hapus/'.$val->id_petugas, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?></td>
                 			<td><?php echo anchor('admin/manage_petugas/edit/'.$val->id_petugas, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?></td>
                 		</tr>

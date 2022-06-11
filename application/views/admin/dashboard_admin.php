@@ -24,7 +24,7 @@
         </li>
 
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('admin/registrasi') ?>">
+            <a class="nav-link" href="<?php echo base_url('admin/registrasi_admin') ?>">
                 <i class="fas fa-wa fa-id-card"></i>
                 <span>Registrasi</span></a>
         </li>

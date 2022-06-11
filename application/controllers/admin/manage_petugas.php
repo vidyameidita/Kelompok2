@@ -15,7 +15,7 @@ class Manage_petugas extends CI_Controller
 	public function index()
 	{
 		// $data['sip'] = 'ini contoh untuk menampilkan data';
-		$data['registrasi'] = $this->Mmanage_petugas->get_data();
+		$data['manage_petugas'] = $this->Mmanage_petugas->get_data();
 		// print_r($data);
 		// die();
 
